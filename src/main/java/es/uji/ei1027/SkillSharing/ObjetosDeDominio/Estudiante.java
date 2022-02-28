@@ -57,7 +57,7 @@ public class Estudiante {
                 "dni_alumno='" + dni_alumno + "\'" +
                 ", nombre_completo='" + nombre_completo + "\'" +
                 ", email='" + email + "\'" +
-                ", password=" + password +
+                ", password=" + password + "\'" +
                 ", baneado='" + baneado + "\'" +
                 "}";
     }

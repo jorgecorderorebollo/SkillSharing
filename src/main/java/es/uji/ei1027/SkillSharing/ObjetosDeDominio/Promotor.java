@@ -47,7 +47,7 @@ public class Promotor {
                 "dni_promotor='" + dni_promotor + "\'" +
                 ", nombre_completo='" + nombre_completo + "\'" +
                 ", email='" + email + "\'" +
-                ", password=" + password +
+                ", password=" + password + "\'" +
                 "}";
     }
 }
