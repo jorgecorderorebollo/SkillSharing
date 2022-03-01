@@ -28,7 +28,8 @@ public class IncidenciaDao {
 
     /* DELETE */
     public void deleteIncidencia(Incidencia incidencia) {
-        jdbcTemplate.update("DELETE FROM incidencia WHERE dni_alumno=? AND dni_promotor=?");
+        jdbcTemplate.update("DELETE FROM incidencia WHERE dni_alumno=? AND dni_promotor=?",
+                incidencia.getDni_alumno(), incidencia.getDni_promotor());
     }
 
     /* UPDATE */

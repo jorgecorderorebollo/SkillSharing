@@ -29,7 +29,8 @@ public class SolicitudDao {
 
     /* DELETE */
     public void deleteSolicitud(Solicitud solicitud) {
-        jdbcTemplate.update("DELETE FROM solicitud WHERE codigo_solicitud=?");
+        jdbcTemplate.update("DELETE FROM solicitud WHERE codigo_solicitud=?",
+                solicitud.getCodigo_solicitud());
     }
 
     /* UPDATE */
