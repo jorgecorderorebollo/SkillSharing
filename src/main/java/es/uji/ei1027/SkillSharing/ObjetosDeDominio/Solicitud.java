@@ -2,23 +2,24 @@ package es.uji.ei1027.SkillSharing.ObjetosDeDominio;
 
 import java.util.Date;
 
-public class Oferta {
-    private String codigo_oferta;
+public class Solicitud {
+
+    private String codigo_solicitud;
     private Date startdate;
     private Date enddate;
     private String descripcion;
     private String dni_alumno;
     private String codigo_habilidad;
 
-    public Oferta() {
+    public Solicitud() {
     }
 
-    public String getCodigo_oferta() {
-        return codigo_oferta;
+    public String getCodigo_solicitud() {
+        return codigo_solicitud;
     }
 
-    public void setCodigo_oferta(String codigo) {
-        this.codigo_oferta = codigo;
+    public void setCodigo_solicitud(String codigo) {
+        this.codigo_solicitud = codigo;
     }
 
     public Date getStartdate() {
@@ -63,8 +64,8 @@ public class Oferta {
 
     @Override
     public String toString() {
-        return "Oferta{" +
-                ", codigo_oferta='" + codigo_oferta + "\'" +
+        return "Solicitud{" +
+                ", codigo_solicitud='" + codigo_solicitud + "\'" +
                 ", startdate='" + startdate + "\'" +
                 ", enddate='" + enddate + "\'" +
                 ", descripcion='" + descripcion + "\'" +
