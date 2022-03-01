@@ -22,23 +22,29 @@ public class SolicitudDao {
 
     /* INSERT*/
     public void addSolicitud(Solicitud solicitud) {
-        jdbcTemplate.update(...)
+        jdbcTemplate.update("INSERT INTO solicitud VALUES (?, ?, ?, ?, ?, ?)",
+                solicitud.getCodigo_solicitud(), solicitud.getStartdate(), solicitud.getEnddate(),
+                solicitud.getDescripcion(), solicitud.getDni_alumno(), solicitud.getCodigo_habilidad());
     }
 
     /* DELETE */
     public void deleteSolicitud(Solicitud solicitud) {
-        jdbcTemplate.update(...);
+        jdbcTemplate.update("DELETE FROM solicitud WHERE codigo_solicitud=?");
     }
 
     /* UPDATE */
     public void updateSolicitud(Solicitud solicitud) {
-        jdbcTemplate.update(...);
+        jdbcTemplate.update("UPDATE solicitud SET startdate=?, enddate=?, descripcion=?," +
+                "dni_alumno=?, codigo_habilidad=? WHERE codigo_solicitud=?",
+                solicitud.getStartdate(), solicitud.getEnddate(), solicitud.getDescripcion(),
+                solicitud.getDni_alumno(), solicitud.getCodigo_habilidad(), solicitud.getCodigo_solicitud());
     }
 
     /* SELECT Solicitud */
-    public Solicitud getSolicitud(String nombreSolicitud) {
+    public Solicitud getSolicitud(String codigo) {
         try {
-            return jdbcTemplate.queryForObject(...);
+            return jdbcTemplate.queryForObject("SELECT * FROM solicitud WHERE codigo_solicitud=?",
+                    new SolicitudRowMapper(), codigo);
         }
         catch(EmptyResultDataAccessException e) {
             return null;
@@ -48,7 +54,8 @@ public class SolicitudDao {
     /* SELECT lista Solicitud */
     public List<Solicitud> getSolicitudes() {
         try {
-            return jdbcTemplate.query(...)
+            return jdbcTemplate.query("SELECT * FROM solicitud",
+                    new SolicitudRowMapper());
         }
         catch(EmptyResultDataAccessException e) {
             return new ArrayList<Solicitud>();
