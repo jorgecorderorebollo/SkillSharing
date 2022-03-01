@@ -21,23 +21,29 @@ public class IncidenciaDao {
 
     /* INSERT*/
     public void addIncidencia(Incidencia incidencia) {
-        jdbcTemplate.update(...)
+        jdbcTemplate.update("INSERT INTO incidencia VALUES (?, ?, ?, ?, ?, ?)",
+               incidencia.getDni_alumno(), incidencia.getDni_promotor(), incidencia.getNombre_alumno(),
+                incidencia.getNombre_promotor(), incidencia.getDescripcion());
     }
 
     /* DELETE */
     public void deleteIncidencia(Incidencia incidencia) {
-        jdbcTemplate.update(...);
+        jdbcTemplate.update("DELETE FROM incidencia WHERE dni_alumno=? AND dni_promotor=?");
     }
 
     /* UPDATE */
     public void updateIncidencia(Incidencia incidencia) {
-        jdbcTemplate.update(...);
+        jdbcTemplate.update("UPDATE incidencia SET nombre_alumno=?, nombre_promotor=?, descripcion=? " +
+                "WHERE dni_alumno=? AND dni_promotor=?",
+                incidencia.getNombre_alumno(), incidencia.getNombre_promotor(), incidencia.getDescripcion(),
+                incidencia.getDni_alumno(), incidencia.getDni_promotor());
     }
 
     /* SELECT Incidencia */
-    public Incidencia getIncidencia(String nombreIncidencia) {
+    public Incidencia getIncidencia(String codigoEstudiante, String codigoPromotor) {
         try {
-            return jdbcTemplate.queryForObject(...);
+            return jdbcTemplate.queryForObject("SELECT * FROM incidencia WHERE dni_alumno=? AND dni_promotor=?",
+                    new IncidenciaRowMapper(), codigoEstudiante, codigoPromotor);
         }
         catch(EmptyResultDataAccessException e) {
             return null;
@@ -47,7 +53,8 @@ public class IncidenciaDao {
     /* SELECT lista Incidencia */
     public List<Incidencia> getIncidencias() {
         try {
-            return jdbcTemplate.query(...)
+            return jdbcTemplate.query("SELECT * FROM incidencia",
+                    new IncidenciaRowMapper());
         }
         catch(EmptyResultDataAccessException e) {
             return new ArrayList<Incidencia>();

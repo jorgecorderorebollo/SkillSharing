@@ -15,6 +15,4 @@ public final class SolicitudRowMapper implements RowMapper<Solicitud> {
         solicitud.setCodigo_habilidad(rs.getString("codigo_habilidad"));
         return solicitud;
     }
-
-
 }
