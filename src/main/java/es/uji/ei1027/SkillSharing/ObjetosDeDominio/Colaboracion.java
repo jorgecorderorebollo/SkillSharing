@@ -73,13 +73,13 @@ public class Colaboracion {
     @Override
     public String toString() {
         return "Colaboracion{" +
-                ", codigo_colaboracion='" + codigo_colaboracion + "\'" +
-                ", startdate='" + startdate + "\'" +
-                ", enddate='" + enddate + "\'" +
-                ", horas='" + horas +
-                ", evaluacion='" + evaluacion + "\'" +
-                ", codigo_oferta='" + codigo_oferta + "\'" +
-                ", codigo_solicitud='" + codigo_solicitud + "\'" +
-                "}";
+                "codigo_colaboracion='" + codigo_colaboracion + '\'' +
+                ", startdate=" + startdate +
+                ", enddate=" + enddate +
+                ", horas=" + horas +
+                ", evaluacion='" + evaluacion + '\'' +
+                ", codigo_oferta='" + codigo_oferta + '\'' +
+                ", codigo_solicitud='" + codigo_solicitud + '\'' +
+                '}';
     }
 }

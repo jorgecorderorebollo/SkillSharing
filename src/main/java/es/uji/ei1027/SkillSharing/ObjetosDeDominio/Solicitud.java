@@ -65,12 +65,12 @@ public class Solicitud {
     @Override
     public String toString() {
         return "Solicitud{" +
-                ", codigo_solicitud='" + codigo_solicitud + "\'" +
-                ", startdate='" + startdate + "\'" +
-                ", enddate='" + enddate + "\'" +
-                ", descripcion='" + descripcion + "\'" +
-                ", dni_alumno='" + dni_alumno + "\'" +
-                ", codigo_habilidad='" + codigo_habilidad + "\'" +
-                "}";
+                "codigo_solicitud='" + codigo_solicitud + '\'' +
+                ", startdate=" + startdate +
+                ", enddate=" + enddate +
+                ", descripcion='" + descripcion + '\'' +
+                ", dni_alumno='" + dni_alumno + '\'' +
+                ", codigo_habilidad='" + codigo_habilidad + '\'' +
+                '}';
     }
 }

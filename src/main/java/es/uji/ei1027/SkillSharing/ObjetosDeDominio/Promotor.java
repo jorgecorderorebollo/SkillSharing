@@ -44,10 +44,10 @@ public class Promotor {
     @Override
     public String toString() {
         return "Promotor{" +
-                "dni_promotor='" + dni_promotor + "\'" +
-                ", nombre_completo='" + nombre_completo + "\'" +
-                ", email='" + email + "\'" +
-                ", password=" + password + "\'" +
-                "}";
+                "dni_promotor='" + dni_promotor + '\'' +
+                ", nombre_completo='" + nombre_completo + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 }

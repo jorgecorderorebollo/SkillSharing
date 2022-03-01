@@ -64,12 +64,12 @@ public class Oferta {
     @Override
     public String toString() {
         return "Oferta{" +
-                ", codigo_oferta='" + codigo_oferta + "\'" +
-                ", startdate='" + startdate + "\'" +
-                ", enddate='" + enddate + "\'" +
-                ", descripcion='" + descripcion + "\'" +
-                ", dni_alumno='" + dni_alumno + "\'" +
-                ", codigo_habilidad='" + codigo_habilidad + "\'" +
-                "}";
+                "codigo_oferta='" + codigo_oferta + '\'' +
+                ", startdate=" + startdate +
+                ", enddate=" + enddate +
+                ", descripcion='" + descripcion + '\'' +
+                ", dni_alumno='" + dni_alumno + '\'' +
+                ", codigo_habilidad='" + codigo_habilidad + '\'' +
+                '}';
     }
 }

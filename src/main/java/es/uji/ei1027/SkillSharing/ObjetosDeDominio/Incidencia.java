@@ -52,11 +52,11 @@ public class Incidencia {
     @Override
     public String toString() {
         return "Incidencia{" +
-                "dni_alumno='" + dni_alumno + "\'" +
-                ", dni_promotor='" + dni_promotor + "\'" +
-                ", nombre_alumno='" + nombre_alumno + "\'" +
-                ", nombre_promotor='" + nombre_promotor + "\'" +
-                ", descripcion='" + descripcion + "\'" +
-                "}";
+                "dni_alumno='" + dni_alumno + '\'' +
+                ", dni_promotor='" + dni_promotor + '\'' +
+                ", nombre_alumno='" + nombre_alumno + '\'' +
+                ", nombre_promotor='" + nombre_promotor + '\'' +
+                ", descripcion='" + descripcion + '\'' +
+                '}';
     }
 }

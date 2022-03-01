@@ -54,11 +54,11 @@ public class Estudiante {
     @Override
     public String toString() {
         return "Estudiante{" +
-                "dni_alumno='" + dni_alumno + "\'" +
-                ", nombre_completo='" + nombre_completo + "\'" +
-                ", email='" + email + "\'" +
-                ", password=" + password + "\'" +
-                ", baneado='" + baneado + "\'" +
-                "}";
+                "dni_alumno='" + dni_alumno + '\'' +
+                ", nombre_completo='" + nombre_completo + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", baneado=" + baneado +
+                '}';
     }
 }

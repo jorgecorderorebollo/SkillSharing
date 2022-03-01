@@ -44,10 +44,10 @@ public class Habilidad {
     @Override
     public String toString() {
         return "Habilidad{" +
-                "codigo_habilidad='" + codigo_habilidad + "\'" +
-                ", nombre='" + nombre + "\'" +
-                ", descripcion='" + descripcion + "\'" +
-                ", estatus='" + estatus + "\'" +
-                "}";
+                "codigo_habilidad='" + codigo_habilidad + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", descripcion='" + descripcion + '\'' +
+                ", estatus='" + estatus + '\'' +
+                '}';
     }
 }
