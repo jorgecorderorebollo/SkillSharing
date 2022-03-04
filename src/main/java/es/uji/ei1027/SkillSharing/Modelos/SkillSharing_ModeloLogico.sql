@@ -46,9 +46,9 @@ CONSTRAINT ca_incidencia_dni_promotor FOREIGN KEY (dni_promotor) REFERENCES prom
 /*------------------------------(CREAR TABLA HABILIDAD)------------------------------*/
 CREATE TABLE habilidad(
 codigo_habilidad    VARCHAR(6) NOT NULL,
-nombre 		        VARCHAR(100),
-descripcion		    VARCHAR(500),
-estatus			    VARCHAR(100),
+nombre 		          VARCHAR(100),
+descripcion		      VARCHAR(500),
+nivel			          VARCHAR(100),
 CONSTRAINT pk_codigo_habilidad PRIMARY KEY(codigo_habilidad));
 
 
@@ -56,9 +56,9 @@ CONSTRAINT pk_codigo_habilidad PRIMARY KEY(codigo_habilidad));
 /*------------------------------(CREAR TABLA OFERTA)------------------------------*/
 CREATE TABLE oferta(
 codigo_oferta 		VARCHAR(6) NOT NULL,
-startdate 		    DATE,
-enddate 		    DATE,
-descripcion 		VARCHAR(500),
+fecha_inicio 		  DATE,
+fecha_fin    		  DATE,
+descripcion 		  VARCHAR(500),
 dni_alumno 		    VARCHAR(9),
 codigo_habilidad 	VARCHAR(6),
 CONSTRAINT pk_codigo_oferta PRIMARY KEY(codigo_oferta),
@@ -70,9 +70,9 @@ CONSTRAINT ca_oferta_habilidad FOREIGN KEY (codigo_habilidad) REFERENCES habilid
 /*------------------------------(CREAR TABLA SOLICITUD)------------------------------*/
 CREATE TABLE solicitud(
 codigo_solicitud 	VARCHAR(6),
-startdate 		    DATE,
-enddate 		    DATE,
-descripcion 		VARCHAR(500),
+fecha_inicio 		  DATE,
+fecha_fin 		    DATE,
+descripcion 		  VARCHAR(500),
 dni_alumno 		    VARCHAR(9),
 codigo_habilidad 	VARCHAR(6),
 CONSTRAINT pk_codigo_solicitud PRIMARY KEY (codigo_solicitud),
@@ -84,12 +84,12 @@ CONSTRAINT ca_solicitud_habilidad FOREIGN KEY (codigo_habilidad) REFERENCES habi
 /*------------------------------(CREAR TABLA COLABORACION)------------------------------*/
 CREATE TABLE colaboracion(
 codigo_colaboracion 	VARCHAR(6),
-fecha_inicio			DATE,
-fecha_fin			    DATE,
-horas 				    FLOAT,
-evaluacion 			    VARCHAR(500),
-codigo_oferta 			VARCHAR(6),
-codigo_solicitud 		VARCHAR(6),
+fecha_inicio			    DATE,
+fecha_fin			        DATE,
+horas 				        FLOAT,
+evaluacion 			      VARCHAR(500),
+codigo_oferta 			  VARCHAR(6),
+codigo_solicitud 		  VARCHAR(6),
 CONSTRAINT pk_codigo_colaboracion PRIMARY KEY (codigo_colaboracion),
 CONSTRAINT ca_colaboracion_oferta FOREIGN KEY(codigo_oferta) REFERENCES oferta(codigo_oferta) ON DELETE RESTRICT ON UPDATE CASCADE,
 CONSTRAINT ca_colaboracion_solicitud FOREIGN KEY (codigo_solicitud)REFERENCES solicitud(codigo_solicitud) ON DELETE RESTRICT ON UPDATE CASCADE); 
