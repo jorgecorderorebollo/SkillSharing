@@ -4,7 +4,7 @@ public class Habilidad {
     private String codigo_habilidad;
     private String nombre;
     private String descripcion;
-    private String estatus;
+    private String nivel;
 
     public Habilidad() {
     }
@@ -33,12 +33,12 @@ public class Habilidad {
         this.descripcion = d;
     }
 
-    public String getEstatus() {
-        return estatus;
+    public String getNivel() {
+        return nivel;
     }
 
-    public void setEstatus(String e) {
-        this.estatus = e;
+    public void setNivel(String e) {
+        this.nivel = e;
     }
 
     @Override
@@ -47,7 +47,7 @@ public class Habilidad {
                 "codigo_habilidad='" + codigo_habilidad + '\'' +
                 ", nombre='" + nombre + '\'' +
                 ", descripcion='" + descripcion + '\'' +
-                ", estatus='" + estatus + '\'' +
+                ", nivel='" + nivel + '\'' +
                 '}';
     }
 }

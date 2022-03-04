@@ -4,8 +4,8 @@ import java.util.Date;
 
 public class Colaboracion {
     private String codigo_colaboracion;
-    private Date startdate;
-    private Date enddate;
+    private Date fecha_inicio;
+    private Date fecha_fin;
     private float horas;
     private String evaluacion;
     private String codigo_oferta;
@@ -22,20 +22,20 @@ public class Colaboracion {
         this.codigo_colaboracion = codigo;
     }
 
-    public Date getStartdate() {
-        return startdate;
+    public Date getFecha_inicio() {
+        return fecha_inicio;
     }
 
-    public void setStartdate(Date d) {
-        this.startdate = d;
+    public void setFecha_inicio(Date d) {
+        this.fecha_inicio = d;
     }
 
-    public Date getEnddate() {
-        return enddate;
+    public Date getFecha_fin() {
+        return fecha_fin;
     }
 
-    public void setEnddate(Date d) {
-        this.enddate = d;
+    public void setFecha_fin(Date d) {
+        this.fecha_fin = d;
     }
 
     public float getHoras() {
@@ -74,8 +74,8 @@ public class Colaboracion {
     public String toString() {
         return "Colaboracion{" +
                 "codigo_colaboracion='" + codigo_colaboracion + '\'' +
-                ", startdate=" + startdate +
-                ", enddate=" + enddate +
+                ", fecha_inicio=" + fecha_inicio +
+                ", fecha_fin=" + fecha_fin +
                 ", horas=" + horas +
                 ", evaluacion='" + evaluacion + '\'' +
                 ", codigo_oferta='" + codigo_oferta + '\'' +

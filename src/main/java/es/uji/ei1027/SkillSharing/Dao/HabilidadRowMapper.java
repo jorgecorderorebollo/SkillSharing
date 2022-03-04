@@ -13,7 +13,7 @@ public final class HabilidadRowMapper implements RowMapper<Habilidad> {
         habilidad.setCodigo_habilidad(rs.getString("codigo_oferta"));
         habilidad.setNombre(rs.getString("nombre"));
         habilidad.setDescripcion(rs.getString("descripcion"));
-        habilidad.setEstatus(rs.getString("estatus"));
+        habilidad.setNivel(rs.getString("nivel"));
         return habilidad;
     }
 }

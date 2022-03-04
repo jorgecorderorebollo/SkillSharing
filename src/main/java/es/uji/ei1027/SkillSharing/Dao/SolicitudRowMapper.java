@@ -10,7 +10,8 @@ public final class SolicitudRowMapper implements RowMapper<Solicitud> {
     public Solicitud mapRow(ResultSet rs, int rowNum) throws SQLException {
         Solicitud solicitud = new Solicitud();
         solicitud.setCodigo_solicitud(rs.getString("codigo_solicitud"));
-        solicitud.setStartdate(rs.getDate("startdate"));
+        solicitud.setFecha_inicio(rs.getDate("fecha_inicio"));
+        solicitud.setFecha_fin(rs.getDate("fecha_fin"));
         solicitud.setDni_alumno(rs.getString("dni_alumno"));
         solicitud.setCodigo_habilidad(rs.getString("codigo_habilidad"));
         return solicitud;
