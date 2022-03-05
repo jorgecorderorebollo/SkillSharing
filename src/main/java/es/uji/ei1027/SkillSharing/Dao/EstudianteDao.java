@@ -10,7 +10,7 @@ import javax.sql.DataSource;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EstudianteDao {
+public class EstudianteDao { /*
     private JdbcTemplate jdbcTemplate;
 
     // Obté el jdbcTemplate a partir del Data Source
@@ -19,22 +19,22 @@ public class EstudianteDao {
         jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
-    /* INSERT*/
+    /* INSERT*/ /*
     public void addEstudiante(Estudiante estudiante) {
         jdbcTemplate.update(...)
     }
 
-    /* DELETE */
+    /* DELETE */ /*
     public void deleteEstudiante(Estudiante estudiante) {
         jdbcTemplate.update(...);
     }
 
-    /* UPDATE */
+    /* UPDATE */ /*
     public void updateEstudiante(Estudiante estudiante) {
         jdbcTemplate.update(...);
     }
 
-    /* SELECT Estudiante */
+    /* SELECT Estudiante */ /*
     public Estudiante getEstudiante(String nombreEstudiante) {
         try {
             return jdbcTemplate.queryForObject(...);
@@ -44,7 +44,7 @@ public class EstudianteDao {
         }
     }
 
-    /* SELECT lista Estudiante */
+    /* SELECT lista Estudiante */ /*
     public List<Estudiante> getEstudiantes() {
         try {
             return jdbcTemplate.query(...)
@@ -52,5 +52,5 @@ public class EstudianteDao {
         catch(EmptyResultDataAccessException e) {
             return new ArrayList<Estudiante>();
         }
-    }
+    }*/
 }

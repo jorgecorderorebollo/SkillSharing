@@ -9,7 +9,7 @@ import javax.sql.DataSource;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ColaboracionDao {
+public class ColaboracionDao { /*
     private JdbcTemplate jdbcTemplate;
 
     // Obté el jdbcTemplate a partir del Data Source
@@ -18,22 +18,22 @@ public class ColaboracionDao {
         jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
-    /* INSERT*/
+    /* INSERT*/ /*
     public void addColaboracion(Colaboracion colaboracion) {
         jdbcTemplate.update(...)
     }
 
-    /* DELETE */
+    /* DELETE */ /*
     public void deleteColaboracion(Colaboracion colaboracion) {
         jdbcTemplate.update(...);
     }
 
-    /* UPDATE */
+    /* UPDATE */ /*
     public void updateColaboracion(Colaboracion colaboracion) {
         jdbcTemplate.update(...);
     }
 
-    /* SELECT Colaboracion */
+    /* SELECT Colaboracion *//*
     public Colaboracion getColaboracion(String nombreColaboracion) {
         try {
             return jdbcTemplate.queryForObject(...);
@@ -43,7 +43,7 @@ public class ColaboracionDao {
         }
     }
 
-    /* SELECT lista Colaboracion */
+    /* SELECT lista Colaboracion *//*
     public List<Colaboracion> getColaboraciones() {
         try {
             return jdbcTemplate.query(...)
@@ -51,5 +51,5 @@ public class ColaboracionDao {
         catch(EmptyResultDataAccessException e) {
             return new ArrayList<Colaboracion>();
         }
-    }
+    }*/
 }

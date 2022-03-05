@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OfertaDao {
-    private JdbcTemplate jdbcTemplate;
+    /*private JdbcTemplate jdbcTemplate;
 
     // Obté el jdbcTemplate a partir del Data Source
     @Autowired
@@ -19,22 +19,22 @@ public class OfertaDao {
         jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
-    /* INSERT*/
+    /* INSERT*/ /*
     public void addOferta(Oferta oferta) {
         jdbcTemplate.update(...)
     }
 
-    /* DELETE */
+    /* DELETE */ /*
     public void deleteOferta(Oferta oferta) {
         jdbcTemplate.update(...);
     }
 
-    /* UPDATE */
+    /* UPDATE */ /*
     public void updateOferta(Oferta oferta) {
         jdbcTemplate.update(...);
     }
 
-    /* SELECT Oferta */
+    /* SELECT Oferta */ /*
     public Oferta getOferta(String nombreOferta) {
         try {
             return jdbcTemplate.queryForObject(...);
@@ -44,7 +44,7 @@ public class OfertaDao {
         }
     }
 
-    /* SELECT lista Oferta */
+    /* SELECT lista Oferta */ /*
     public List<Oferta> getOfertas() {
         try {
             return jdbcTemplate.query(...)
@@ -52,5 +52,5 @@ public class OfertaDao {
         catch(EmptyResultDataAccessException e) {
             return new ArrayList<Oferta>();
         }
-    }
+    }*/
 }

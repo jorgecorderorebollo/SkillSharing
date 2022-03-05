@@ -23,7 +23,7 @@ public class SolicitudDao {
     /* INSERT*/
     public void addSolicitud(Solicitud solicitud) {
         jdbcTemplate.update("INSERT INTO solicitud VALUES (?, ?, ?, ?, ?, ?)",
-                solicitud.getCodigo_solicitud(), solicitud.getStartdate(), solicitud.getEnddate(),
+                solicitud.getCodigo_solicitud(), solicitud.getFecha_inicio(), solicitud.getFecha_fin(),
                 solicitud.getDescripcion(), solicitud.getDni_alumno(), solicitud.getCodigo_habilidad());
     }
 
@@ -35,9 +35,9 @@ public class SolicitudDao {
 
     /* UPDATE */
     public void updateSolicitud(Solicitud solicitud) {
-        jdbcTemplate.update("UPDATE solicitud SET startdate=?, enddate=?, descripcion=?," +
+        jdbcTemplate.update("UPDATE solicitud SET fecha_inicio=?, fecha_fin=?, descripcion=?," +
                 "dni_alumno=?, codigo_habilidad=? WHERE codigo_solicitud=?",
-                solicitud.getStartdate(), solicitud.getEnddate(), solicitud.getDescripcion(),
+                solicitud.getFecha_inicio(), solicitud.getFecha_fin(), solicitud.getDescripcion(),
                 solicitud.getDni_alumno(), solicitud.getCodigo_habilidad(), solicitud.getCodigo_solicitud());
     }
 
