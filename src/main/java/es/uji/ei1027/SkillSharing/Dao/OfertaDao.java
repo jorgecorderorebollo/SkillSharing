@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OfertaDao {
-    /*private JdbcTemplate jdbcTemplate;
+    private JdbcTemplate jdbcTemplate;
 
     // Obté el jdbcTemplate a partir del Data Source
     @Autowired
@@ -19,38 +19,43 @@ public class OfertaDao {
         jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
-    /* INSERT*/ /*
+    /* INSERT*/
     public void addOferta(Oferta oferta) {
-        jdbcTemplate.update(...)
+        jdbcTemplate.update("INSERT INTO oferta VALUES (?, ?, ?, ?, ?, ?)",
+                oferta.getCodigo_oferta(), oferta.getFecha_inicio(), oferta.getFecha_fin(), oferta.getDescripcion(),
+                oferta.getDni_alumno(), oferta.getCodigo_habilidad());
     }
 
-    /* DELETE */ /*
+    /* DELETE */
     public void deleteOferta(Oferta oferta) {
-        jdbcTemplate.update(...);
+        jdbcTemplate.update("DELETE FROM oferta WHERE codigo_oferta=?", oferta.getCodigo_oferta());
     }
 
-    /* UPDATE */ /*
+    /* UPDATE */
     public void updateOferta(Oferta oferta) {
-        jdbcTemplate.update(...);
+        jdbcTemplate.update("UPDATE oferta SET fecha_inicio=?, fecha_fin=?, descripcion=?," +
+                "dni_alumno=?, codigo_habilidad=? WHERE codigo_oferta=?", oferta.getFecha_inicio(), oferta.getFecha_fin(),
+                oferta.getDescripcion(), oferta.getDni_alumno(), oferta.getCodigo_habilidad(), oferta.getCodigo_oferta());
     }
 
-    /* SELECT Oferta */ /*
+    /* SELECT Oferta */
     public Oferta getOferta(String nombreOferta) {
         try {
-            return jdbcTemplate.queryForObject(...);
+            return jdbcTemplate.queryForObject("SELECT * FROM solicitud WHERE codigo_solicitud=?",
+                    new OfertaRowMapper(), nombreOferta);
         }
         catch(EmptyResultDataAccessException e) {
             return null;
         }
     }
 
-    /* SELECT lista Oferta */ /*
+    /* SELECT lista Oferta */
     public List<Oferta> getOfertas() {
         try {
-            return jdbcTemplate.query(...)
+            return jdbcTemplate.query("SELECT * FROM oferta", new OfertaRowMapper());
         }
         catch(EmptyResultDataAccessException e) {
             return new ArrayList<Oferta>();
         }
-    }*/
+    }
 }
