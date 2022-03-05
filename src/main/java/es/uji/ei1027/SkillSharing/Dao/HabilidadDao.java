@@ -26,8 +26,8 @@ public class HabilidadDao {
     }
 
     /* DELETE */
-    public void deleteHabilidad(Habilidad habilidad) {
-        jdbcTemplate.update("DELETE FROM habilidad WHERE codigo_habilidad=?", habilidad.getCodigo_habilidad());
+    public void deleteHabilidad(String codigo) {
+        jdbcTemplate.update("DELETE FROM habilidad WHERE codigo_habilidad=?", codigo);
     }
 
     /* UPDATE */
