@@ -22,7 +22,7 @@ public class HabilidadControlador {
     }
 
     @RequestMapping("/list")
-    public String listIncidents(Model model){
+    public String listHabilidades(Model model){
         model.addAttribute("habilidades", habilidadDao.getHabilidades());
         return "habilidad/list";
     }
@@ -38,7 +38,7 @@ public class HabilidadControlador {
         HabilidadValidador habilidadValidador = new HabilidadValidador();
         habilidadValidador.validate(habilidad, bindingResult);
         if(bindingResult.hasErrors())
-            return "incident/add";
+            return "habilidad/add";
         habilidadDao.addHabilidad((habilidad));
         return "redirect:list";
     }
@@ -50,7 +50,7 @@ public class HabilidadControlador {
     }
 
     @RequestMapping(value="/update", method = RequestMethod.POST)
-    public String processUpdateSubmit(@ModelAttribute("incident") Habilidad habilidad, BindingResult bindingResult){
+    public String processUpdateSubmit(@ModelAttribute("habilidad") Habilidad habilidad, BindingResult bindingResult){
         HabilidadValidador habilidadValidador = new HabilidadValidador();
         habilidadValidador.validate(habilidad, bindingResult);
         if (bindingResult.hasErrors())
