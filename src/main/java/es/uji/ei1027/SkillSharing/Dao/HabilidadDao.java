@@ -39,10 +39,10 @@ public class HabilidadDao {
     }
 
     /* SELECT Habilidad */
-    public Habilidad getHabilidad(String nombreHabilidad) {
+    public Habilidad getHabilidad(String codigo_habilidad) {
         try {
             return jdbcTemplate.queryForObject("SELECT * FROM habilidad WHERE codigo_habilidad=?",
-                    new HabilidadRowMapper(), nombreHabilidad);
+                    new HabilidadRowMapper(), codigo_habilidad);
         }
         catch(EmptyResultDataAccessException e) {
             return null;
