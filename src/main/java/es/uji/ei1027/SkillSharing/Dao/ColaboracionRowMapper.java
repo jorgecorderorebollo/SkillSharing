@@ -1,7 +1,7 @@
 package es.uji.ei1027.SkillSharing.Dao;
 
 
-import es.uji.ei1027.SkillSharing.ObjetosDeDominio.Colaboracion;
+import es.uji.ei1027.SkillSharing.Model.Colaboracion;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;

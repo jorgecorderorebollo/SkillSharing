@@ -1,5 +1,5 @@
-package es.uji.ei1027.SkillSharing.Controladores;
-import es.uji.ei1027.SkillSharing.ObjetosDeDominio.Habilidad;
+package es.uji.ei1027.SkillSharing.Controller;
+import es.uji.ei1027.SkillSharing.Model.Habilidad;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 

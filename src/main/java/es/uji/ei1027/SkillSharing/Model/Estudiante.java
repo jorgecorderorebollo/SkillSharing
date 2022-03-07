@@ -1,20 +1,22 @@
-package es.uji.ei1027.SkillSharing.ObjetosDeDominio;
+package es.uji.ei1027.SkillSharing.Model;
 
-public class Promotor {
-    private String dni_promotor;
+public class Estudiante {
+
+    private String dni_alumno;
     private String nombre_completo;
     private String email;
     private String password;
+    private Boolean baneado;
 
-    public Promotor() {
+    public Estudiante() {
     }
 
-    public String getDni_promotor() {
-        return dni_promotor;
+    public String getDni_alumno() {
+        return dni_alumno;
     }
 
-    public void setDni_promotor(String dni) {
-        this.dni_promotor = dni;
+    public void setDni_alumno(String dni) {
+        this.dni_alumno = dni;
     }
 
     public String getNombre_completo() {
@@ -41,13 +43,22 @@ public class Promotor {
         this.password = ps;
     }
 
+    public Boolean getBaneado() {
+        return baneado;
+    }
+
+    public void setBaneado(Boolean ban) {
+        this.baneado = ban;
+    }
+
     @Override
     public String toString() {
-        return "Promotor{" +
-                "dni_promotor='" + dni_promotor + '\'' +
+        return "Estudiante{" +
+                "dni_alumno='" + dni_alumno + '\'' +
                 ", nombre_completo='" + nombre_completo + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
+                ", baneado=" + baneado +
                 '}';
     }
 }

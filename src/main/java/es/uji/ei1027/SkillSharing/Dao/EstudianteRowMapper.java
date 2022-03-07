@@ -1,7 +1,7 @@
 package es.uji.ei1027.SkillSharing.Dao;
 
 
-import es.uji.ei1027.SkillSharing.ObjetosDeDominio.Estudiante;
+import es.uji.ei1027.SkillSharing.Model.Estudiante;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;

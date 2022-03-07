@@ -1,6 +1,6 @@
 package es.uji.ei1027.SkillSharing.Dao;
 
-import es.uji.ei1027.SkillSharing.ObjetosDeDominio.Incidencia;
+import es.uji.ei1027.SkillSharing.Model.Incidencia;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;

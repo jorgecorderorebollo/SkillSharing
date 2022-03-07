@@ -1,6 +1,6 @@
 package es.uji.ei1027.SkillSharing.Dao;
 
-import es.uji.ei1027.SkillSharing.ObjetosDeDominio.Colaboracion;
+import es.uji.ei1027.SkillSharing.Model.Colaboracion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;

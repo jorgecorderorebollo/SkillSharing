@@ -1,4 +1,4 @@
-package es.uji.ei1027.SkillSharing.ObjetosDeDominio;
+package es.uji.ei1027.SkillSharing.Model;
 
 public class Habilidad {
     private String codigo_habilidad;

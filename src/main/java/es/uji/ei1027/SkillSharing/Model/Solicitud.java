@@ -1,4 +1,4 @@
-package es.uji.ei1027.SkillSharing.ObjetosDeDominio;
+package es.uji.ei1027.SkillSharing.Model;
 
 import java.util.Date;
 
