@@ -48,6 +48,6 @@ public class Habilidad {
                 ", nombre='" + nombre + '\'' +
                 ", descripcion='" + descripcion + '\'' +
                 ", nivel='" + nivel + '\'' +
-                '}';
+                "}";
     }
 }

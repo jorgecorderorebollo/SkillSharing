@@ -23,7 +23,7 @@ public class HabilidadDao {
 
     /* INSERT*/
     public void addHabilidad(Habilidad habilidad) {
-        jdbcTemplate.update("INSERT INTO solicitud VALUES (?, ?, ?, ?)",
+        jdbcTemplate.update("INSERT INTO habilidad VALUES (?, ?, ?, ?)",
                 habilidad.getCodigo_habilidad(), habilidad.getNombre(), habilidad.getDescripcion(), habilidad.getNivel());
     }
 
