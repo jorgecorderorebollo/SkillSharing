@@ -63,5 +63,4 @@ public class SolicitudDao {
             return new ArrayList<Solicitud>();
         }
     }
-
 }
