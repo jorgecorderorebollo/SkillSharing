@@ -16,12 +16,13 @@
 
     <div class="input-group mb-3">
       <span id="codigo_habilidad"></span>
-      <input type="text" class="form-control" th:field="*{codigo_habilidad}" placeholder="codigo_habilidad" maxlength="6">
+      <input type="text" class="form-control" th:field="*{codigo_habilidad}" placeholder="codigo_habilidad" maxlength="6" required>
+      <td th:if="${#fields.hasErrors('codigo_habilidad')}" th:errors="*{codigo_habilidad}"></td>
     </div>
 
     <div class="input-group mb-3">
       <span id="nombre"></span>
-      <input type="text" class="form-control" th:field="*{nombre}" placeholder="nombre" maxlength="100">
+      <input type="text" class="form-control" th:field="*{nombre}" placeholder="nombre" maxlength="100" required>
     </div>
 
     <div class="input-group mb-3">
@@ -47,7 +48,7 @@
       </div>
       <div><br><br></div>
       <div class="d-grid gap-2">
-        <a class="btn btn-secondary" th:href="@{../../}" role="button" ><font size="4"> Menú principal</font></a>
+        <a class="btn btn-secondary" th:href="@{..}" role="button" ><font size="4"> Menú principal</font></a>
       </div>
     </div>
 

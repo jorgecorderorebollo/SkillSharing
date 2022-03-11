@@ -26,20 +26,17 @@ public class HabilidadValidador implements Validator{
             errors.rejectValue("codigo_habilidad", "Habilidad_codigo_habilidad_blancosAlInicio",
                     "Elimine los espacios en blanco del inicio de este campo");
 
-        if (!habilidad.getCodigo_habilidad().trim().substring(1, 5).matches("[0-9]"))
-            errors.rejectValue("codigo_habilidad", "Habilidad_codigo_habilidad_ViolacionCadenaDeDigitos",
-                    "El valor introducido debe tener el siguiente formato (Las 'x' són digitos): Hxxxxx");
-
-        if (!habilidad.getCodigo_habilidad().trim().substring(0).toUpperCase().equals("I")) //DNI sin letra identificativa
+        /*if (!habilidad.getCodigo_habilidad().trim().substring(0).toUpperCase().equals("H")) //DNI sin letra identificativa
             errors.rejectValue("codigo_habilidad", "Habilidad_codigo_habilidad_ViolacionLetraCodigo",
                     "El valor introducido debe tener el siguiente formato (Las 'x' són digitos): Hxxxxx");
+
+        if (!habilidad.getCodigo_habilidad().trim().substring(1, 5).matches("[0-9]"))
+            errors.rejectValue("codigo_habilidad", "Habilidad_codigo_habilidad_ViolacionCadenaDeDigitos",
+                    "Valor numérico: Cumpla el siguiente formato (Las 'x' són digitos): Hxxxxx");*/
 
         /*------------------------------------(Nombre de la habilidad)------------------------------------*/
         if (habilidad.getCodigo_habilidad().trim().equals("")) //Código vacio
             errors.rejectValue("nombre", "Habilidad_nombre_vacio",
                     "Debe facilitar un nombre.");
-        /*------------------------------------(Descripción de la habilidad)------------------------------------*/
-        /*------------------------------------(Nivel de la habilidad)------------------------------------*/
-        //El nivel esta asegurado al ser una lista de seleción
     }
 }
