@@ -70,10 +70,10 @@ public class LoginController {
 
     private String calcularRedireccion(Usuario usuario){
         switch(usuario.getTipo()){
-            case "Ciutada":
-                return "redirect:usuario/sesionCiutada";
-            case "Gestor":
-                return "redirect:usuario/sesionGestor";
+            case "Alumno":
+                return "redirect:usuario/sesionAlumno";
+            case "Promotor":
+                return "redirect:usuario/sesionPromotor";
             default:
                 return "login";
         }
