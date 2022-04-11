@@ -14,22 +14,40 @@ public class UsuarioDao {
     private JdbcTemplate jdbcTemplate;
 
     @Autowired
-    public void setDataSource(DataSource dataSource){
+    public void setDataSource(DataSource dataSource) {
         jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
-    public Usuario contrasenyaCiutada(String username, String password){
-        try{
-            BasicPasswordEncryptor passwordEncriptor=new BasicPasswordEncryptor();
+
+    public Usuario comprobarPassword(String username, String password) {
+        try {
+            BasicPasswordEncryptor passwordEncriptor = new BasicPasswordEncryptor();
 
             Usuario usuario = jdbcTemplate.queryForObject("SELECT * FROM usuario WHERE username=?",
                     new UsuarioRowMapper(), username);
 
-            if( usuario!=null && passwordEncriptor.checkPassword(password, usuario.getUsername())) return new Usuario(username, password,"Alumno");
+            if (usuario != null && passwordEncriptor.checkPassword(password, usuario.getUsername())) return usuario;
 
             return null;
 
-        } catch (EmptyResultDataAccessException e){
+        } catch (EmptyResultDataAccessException e) {
             return null;
         }
     }
+
+
+    public Usuario getTipo(String username) {
+        try {
+
+            Usuario usuario = jdbcTemplate.queryForObject("SELECT * FROM usuario WHERE username=?",
+                    new UsuarioRowMapper(), username);
+
+            if (usuario != null) return usuario;
+
+            return null;
+
+        } catch (EmptyResultDataAccessException e) {
+            return null;
+        }
+    }
+}

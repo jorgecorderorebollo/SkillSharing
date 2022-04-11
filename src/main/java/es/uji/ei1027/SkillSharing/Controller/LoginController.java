@@ -31,30 +31,21 @@ public class LoginController {
     public String checkLogin(@ModelAttribute("usuario") Usuario usuario,
                              BindingResult bindingResult, HttpSession session) {
 
-        // Comprova que el login siga correcte
-        // intentant carregar les dades de l'usuari
-
-        Usuario aux = usuario;
-        usuario = usuarioDao.getTipoCiutada(usuario.getUsername(), usuario.getPassword());
+        //Comprobación de la existencia del usuario
+        usuario = usuarioDao.getTipo(usuario.getUsername());
         if(usuario == null) {
-            usuario = usuarioDao.getTipoGestor(aux.getUsername(), aux.getPassword());
-            if(usuario == null){
-                bindingResult.rejectValue("username", "badpw", "Usuari inexistent");
-                return "login";
-            }
-
+            bindingResult.rejectValue("username", "badpw", "Usuari inexistent");
+            return "login";
         }
 
-        Usuario user = usuarioDao.contrasenyaCiutada(aux.getUsername(), aux.getPassword());
+        //Comprobación de la contraseña del usuario
+        Usuario user = usuarioDao.comprobarPassword(usuario.getUsername(), usuario.getPassword());
         if (user == null){
-            user = usuarioDao.contrasenyaGestor(aux.getUsername(), aux.getPassword());
-            if (user == null) {
-                bindingResult.rejectValue("password", "badpw", "Contrasenya incorrecta");
-                return "login";
-            }
+            bindingResult.rejectValue("password", "badpw", "Contrasenya incorrecta");
+            return "login";
         }
-        // Autenticats correctament.
-        // Guardem les dades de l'usuari autenticat a la sessió
+
+        //
         user.setPassword(null);
         session.setAttribute("usuario", user);
 
