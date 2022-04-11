@@ -31,25 +31,25 @@ public class LoginController {
     public String checkLogin(@ModelAttribute("usuario") Usuario usuario,
                              BindingResult bindingResult, HttpSession session) {
 
-        //Comprobación de la existencia del usuario
+
         usuario = usuarioDao.getTipo(usuario.getUsername());
         if(usuario == null) {
             bindingResult.rejectValue("username", "badpw", "Usuari inexistent");
             return "login";
         }
 
-        //Comprobación de la contraseña del usuario
+
         Usuario user = usuarioDao.comprobarPassword(usuario.getUsername(), usuario.getPassword());
         if (user == null){
             bindingResult.rejectValue("password", "badpw", "Contrasenya incorrecta");
             return "login";
         }
 
-        //
+
         user.setPassword(null);
         session.setAttribute("usuario", user);
 
-        // Torna a la pàgina principal
+
         return calcularRedireccion(user);
     }
 
@@ -62,9 +62,9 @@ public class LoginController {
     private String calcularRedireccion(Usuario usuario){
         switch(usuario.getTipo()){
             case "Alumno":
-                return "redirect:usuario/sesionAlumno";
+                return "redirect:Usuario/sesionAlumno";
             case "Promotor":
-                return "redirect:usuario/sesionPromotor";
+                return "redirect:Usuario/sesionPromotor";
             default:
                 return "login";
         }
