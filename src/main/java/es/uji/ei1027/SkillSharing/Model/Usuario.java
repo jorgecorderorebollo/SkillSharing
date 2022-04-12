@@ -8,11 +8,6 @@ public class Usuario {
     public Usuario(){
 
     }
-    public Usuario(String username, String password, String tipo){
-        this.username = username;
-        this.password = password;
-        this.tipo = tipo;
-    }
 
     public String getUsername() {
         return username;

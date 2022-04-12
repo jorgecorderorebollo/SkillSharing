@@ -23,7 +23,7 @@
 			<div class="formularioLogin">
 				<div><h1>Inicio de sesión</h1></div>
 				<form action="#" th:action="@{login}" th:object="${usuario}" method="post">
-					<table>
+					<!--<table>
 						<tr>
 							<td class="tablaTdLogin" align="center"><input type="text" placeholder="Usuario">
 						</tr>
@@ -33,7 +33,16 @@
 						<tr>
 							<td class="tablaTdLogin" align="center"><input type="submit">
 						</tr>
-					</table>
+					</table>-->
+					<span id="username"></span>
+					<input type="text" class="form-control" th:field="*{username}" placeholder="username" maxlength="30" required>
+					<td th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></td>
+
+					<span id="password"></span>
+					<input type="password" class="form-control" th:field="*{password}" placeholder="password" maxlength="50" required>
+					<td th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></td>
+
+					<button type="submit" class="btn btn-success"><font size="4"> Entrar</font></button>
 				</form>
 				</div>
 			</div>

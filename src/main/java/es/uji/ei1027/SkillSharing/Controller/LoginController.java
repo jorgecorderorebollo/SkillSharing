@@ -2,6 +2,7 @@ package es.uji.ei1027.SkillSharing.Controller;
 
 import javax.servlet.http.HttpSession;
 
+import ch.qos.logback.core.net.SyslogOutputStream;
 import es.uji.ei1027.SkillSharing.Dao.UsuarioDao;
 import es.uji.ei1027.SkillSharing.Model.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,24 +32,22 @@ public class LoginController {
     public String checkLogin(@ModelAttribute("usuario") Usuario usuario,
                              BindingResult bindingResult, HttpSession session) {
 
-
         usuario = usuarioDao.getTipo(usuario.getUsername());
+
         if(usuario == null) {
             bindingResult.rejectValue("username", "badpw", "Usuari inexistent");
             return "login";
         }
 
-
         Usuario user = usuarioDao.comprobarPassword(usuario.getUsername(), usuario.getPassword());
+
         if (user == null){
-            bindingResult.rejectValue("password", "badpw", "Contrasenya incorrecta");
+            bindingResult.rejectValue("password", "badpw", "Password incorrecta");
             return "login";
         }
 
-
         user.setPassword(null);
         session.setAttribute("usuario", user);
-
 
         return calcularRedireccion(user);
     }
@@ -62,9 +61,9 @@ public class LoginController {
     private String calcularRedireccion(Usuario usuario){
         switch(usuario.getTipo()){
             case "Alumno":
-                return "redirect:Usuario/sesionAlumno";
+                return "redirect:Usuarios/sesionAlumno";
             case "Promotor":
-                return "redirect:Usuario/sesionPromotor";
+                return "redirect:Usuarios/sesionPromotor";
             default:
                 return "login";
         }

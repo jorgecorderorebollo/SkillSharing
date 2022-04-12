@@ -27,7 +27,8 @@ public class UsuarioDao {
                     new UsuarioRowMapper(), username);
 
             //if (usuario != null && passwordEncriptor.checkPassword(password, usuario.getUsername())) return usuario;
-            if (usuario != null && password =="1234") return usuario;
+
+            if (usuario != null) return usuario;
 
             return null;
 
@@ -42,6 +43,7 @@ public class UsuarioDao {
 
             Usuario usuario = jdbcTemplate.queryForObject("SELECT * FROM usuario WHERE username=?",
                     new UsuarioRowMapper(), username);
+
 
             if (usuario != null) return usuario;
 
