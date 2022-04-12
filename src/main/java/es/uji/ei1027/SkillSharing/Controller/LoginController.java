@@ -24,7 +24,7 @@ public class LoginController {
             return calcularRedireccion(usuario);
         }
         model.addAttribute("usuario", new Usuario());
-        return "login";
+        return "/login";
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)

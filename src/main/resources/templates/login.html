@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns:th="http://www.w3.org/1999/xhtml">
 
 	<head>
 		<meta charset="UTF-8">
@@ -9,9 +9,9 @@
 	</head>
 	
 	<body>
-		<div class="transparente">
+		<!--<div class="transparente">
 			<video class="videoLogin" muted autoplay loop=0><source src="videos/UJI.mp4" type="video/mp4"></video>
-		</div>
+		</div>-->
 		<br>
 		<br>
 		<br>
@@ -22,7 +22,7 @@
 			<div class="canvasInferior"></div>
 			<div class="formularioLogin">
 				<div><h1>Inicio de sesión</h1></div>
-				<form>
+				<form action="#" th:action="@{login}" th:object="${usuario}" method="post">
 					<table>
 						<tr>
 							<td class="tablaTdLogin" align="center"><input type="text" placeholder="Usuario">
@@ -35,13 +35,6 @@
 						</tr>
 					</table>
 				</form>
-				<br>
-				<br>
-				<br>
-				<br>
-				<div class="botonesAdministracionZonas">
-					<a class="btn btn-info" href="sesionAlumno.html" role="button">Zona alumno</a>
-					<a class="btn btn-primary" href="sesionPromotor.html" role="button">Zona promotor</a>
 				</div>
 			</div>
 		</div>
