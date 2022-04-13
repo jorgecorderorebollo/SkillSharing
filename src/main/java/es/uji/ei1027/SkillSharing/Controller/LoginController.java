@@ -2,7 +2,6 @@ package es.uji.ei1027.SkillSharing.Controller;
 
 import javax.servlet.http.HttpSession;
 
-import ch.qos.logback.core.net.SyslogOutputStream;
 import es.uji.ei1027.SkillSharing.Dao.UsuarioDao;
 import es.uji.ei1027.SkillSharing.Model.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,20 +24,18 @@ public class LoginController {
             return calcularRedireccion(usuario);
         }
         model.addAttribute("usuario", new Usuario());
-        return "/login";
+        return "login";
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String checkLogin(@ModelAttribute("usuario") Usuario usuario,
                              BindingResult bindingResult, HttpSession session) {
+        Usuario usuarioTipo = usuarioDao.getTipo(usuario.getUsername());
 
-        usuario = usuarioDao.getTipo(usuario.getUsername());
-
-        if(usuario == null) {
+        if(usuarioTipo == null) {
             bindingResult.rejectValue("username", "badpw", "Usuari inexistent");
             return "login";
         }
-
         Usuario user = usuarioDao.comprobarPassword(usuario.getUsername(), usuario.getPassword());
 
         if (user == null){
@@ -52,20 +49,14 @@ public class LoginController {
         return calcularRedireccion(user);
     }
 
-    @RequestMapping("/logout")
-    public String logout(HttpSession session) {
-        session.invalidate();
-        return "redirect:/";
-    }
-
     private String calcularRedireccion(Usuario usuario){
         switch(usuario.getTipo()){
             case "Alumno":
-                return "Usuarios/sesionAlumno";
+                return "redirect:Usuarios/sesionAlumno";
             case "Promotor":
                 return "redirect:Usuarios/sesionPromotor";
             default:
-                return "login";
+                return "redirect:/login";
         }
     }
 }

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.HttpSession;
 
 @Controller
-@RequestMapping("/usuario")
+@RequestMapping("/Usuarios")
 public class UsuarioController {
     private UsuarioDao usuarioDao;
 
@@ -23,11 +23,8 @@ public class UsuarioController {
     public String loginAlumno(Model model, HttpSession session) {
         Usuario usuario = (Usuario) session.getAttribute("usuario");
         if(usuario == null || !usuario.getTipo().equals("Alumno")){
-            return "redirect:/";
+            return "redirect:/login";
         }
-        System.out.println(usuario.getUsername());
-        System.out.println(usuario.getPassword());
-        System.out.println(usuario.getTipo());
         model.addAttribute("usuario", usuario);
         return "Usuarios/sesionAlumno";
     }
@@ -36,9 +33,15 @@ public class UsuarioController {
     public String loginPromotor(Model model, HttpSession session) {
         Usuario usuario = (Usuario) session.getAttribute("usuario");
         if(usuario== null || !usuario.getTipo().equals("Promotor")){
-            return "redirect:/";
+            return "redirect:/login";
         }
         model.addAttribute("usuario", usuario);
         return "Usuarios/sesionPromotor";
+    }
+
+    @RequestMapping("/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "redirect:/login";
     }
 }
