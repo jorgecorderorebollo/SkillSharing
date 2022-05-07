@@ -18,7 +18,7 @@ CREATE TABLE usuario(
   saldo_horas       FLOAT NOT NULL,
   
   CONSTRAINT pk_usuario PRIMARY KEY(id_usuario),
-  CONSTRAINT ri_saldo_disponible CHECK (saldo_horas>0)
+  CONSTRAINT ri_saldo_disponible CHECK (saldo_horas>=0)
   );
   
   
@@ -35,10 +35,11 @@ CREATE TABLE oferta(
   codigo_oferta   VARCHAR(6) NOT NULL,
   fecha_inicio    DATA NOT NULL,
   fecha_fin       DATE,
-  descripcion     VARCHAR(500),
   id_usuario      VARCHAR(9) NOT NULL,
   nombre_habilidad  VARCHAR(20) NOT NULL,
   nivel_habilidad   VARCHAR(20) NOT NULL,
+  descripcion     VARCHAR(500),
+  
   
   CONSTRAINT pk_codigo_oferta PRIMARY KEY(codigo_oferta),
   CONSTRAINT ca_id_usuario FOREIGN KEY(id_usuario) REFERENCES usuario(id_usuario) ON DELETE RESTRICT ON UPDATE CASCADE,
@@ -77,3 +78,24 @@ CREATE TABLE colaboracion(
   CONSTRAINT ca_id_solicitud FOREIGN KEY(codigo_solicitud) REFERENCES solicitud(codigo_solicitud) ON DELETE RESTRICT ON UPDATE CASCADE,
   CONSTRINT ri_evaluacion CHECK (evaluacion BETWEEN 0 AND 10)
   );
+
+
+INSERT INTO Usuario VALUES ('A1234509', 'GEMMA MENGUAL', 'al000001@gmail.com', '1234', , , 20);
+INSERT INTO Usuario VALUES ('A2345091', 'ALBUSAC TAMARGO DANIEL', 'al000002@gmail.com', '1234', , ,15.5);
+INSERT INTO Usuario VALUES ('A1345092', 'CASTELLS GALLEGO MARAI DEL TISCAR', 'al000003@gmail.com', '1234', , TRUE, 20);
+INSERT INTO Usuario VALUES ('G1245093', 'CUETO AVELLANEDA RAFAEL', 'al000004@gmail.com', '1234', FALSE, , 1.5);
+INSERT INTO Usuario VALUES ('R1235094', 'ESCOT HIGUERAS SANDRA', 'al000005@gmail.com', '1234', , TRUE, 19);
+
+INSERT INTO habilidad VALUES ('h00001', 'bajo', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.');
+INSERT INTO habilidad VALUES ('h00001', 'medio', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.');
+INSERT INTO habilidad VALUES ('h00001', 'alto', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.');
+INSERT INTO habilidad VALUES ('h00004', 'alto', 'The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.');
+INSERT INTO habilidad VALUES ('h00005', 'medio', 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour');
+
+INSERT INTO oferta VALUES ('o00001', TO_DATE('21/05/2019', 'DD/MM/YYYY'), TO_DATE('21/05/2019', 'DD/MM/YYYY'), 'A1234509', 'h00004', 'alto', '1The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.');
+INSERT INTO oferta VALUES ('o00002', TO_DATE('21/07/2019', 'DD/MM/YYYY'), TO_DATE('22/07/2019', 'DD/MM/YYYY'), 'A1234509', 'h00001', 'bajo', '2The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.');
+INSERT INTO oferta VALUES ('o00003', TO_DATE('27/04/2022', 'DD/MM/YYYY'), TO_DATE('21/05/2022', 'DD/MM/YYYY'), 'A1234509', 'h00005', 'medio', '3The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.');
+INSERT INTO oferta VALUES ('o00004', TO_DATE('21/05/2020', 'DD/MM/YYYY'), , 'A2345091', 'h00001', 'alto', '4The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.');
+INSERT INTO oferta VALUES ('o00005', TO_DATE('14/09/2021', 'DD/MM/YYYY'), TO_DATE('21/10/2021', 'DD/MM/YYYY'), 'A2345091', 'h00001', 'bajo', '5The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.');
+
+
