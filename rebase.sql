@@ -43,7 +43,7 @@ CREATE TABLE habilidad(
 
 CREATE TABLE oferta(
   codigo_oferta   VARCHAR(6) NOT NULL,
-  fecha_inicio    DATA NOT NULL,
+  fecha_inicio    DATE NOT NULL,
   fecha_fin       DATE,
   id_usuario      VARCHAR(9) NOT NULL,
   nombre_habilidad  VARCHAR(20) NOT NULL,
