@@ -76,7 +76,7 @@ CREATE TABLE colaboracion(
   fecha_inicio          DATE NOT NULL,
   fecha_fin             DATE,
   horas                 FLOAT NOT NULL,
-  evalucion             INT,
+  evaluacion             INT,
   codigo_oferta         VARCHAR(6) NOT NULL,
   id_usuario_solicitante  VARCHAR(9) NOT NULL,
   
