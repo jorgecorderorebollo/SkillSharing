@@ -81,9 +81,8 @@ CREATE TABLE colaboracion(
   id_usuario_solicitante  VARCHAR(9) NOT NULL,
   
   CONSTRAINT  pk_codigo_colaboracion PRIMARY KEY(codigo_colaboracion),
-  CONSTRAINT ca_fini FOREIGN KEY(fecha_inicio) REFERENCES solicitud(fecha_aceptacion) ON DELETE RESTRICT ON UPDATE CASCADE,
+  CONSTRAINT ca_fini FOREIGN KEY(fecha_inicio, id_usuario_solicitante) REFERENCES solicitud(fecha_aceptacion, id_usuario_solicitante) ON DELETE RESTRICT ON UPDATE CASCADE,
   CONSTRAINT ca_id_habilidad FOREIGN KEY(codigo_oferta) REFERENCES oferta(codigo_oferta) ON DELETE RESTRICT ON UPDATE CASCADE,
-  CONSTRAINT ca_id_usuario FOREIGN KEY(id_usuario_solicitante) REFERENCES solicitud(id_usuario_solicitante) ON DELETE RESTRICT ON UPDATE CASCADE,
   CONSTRAINT ri_evaluacion CHECK (evaluacion BETWEEN 0 AND 10)
   );
 
