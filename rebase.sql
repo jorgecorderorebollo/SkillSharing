@@ -18,8 +18,21 @@ CREATE TABLE usuario(
   saldo_horas       FLOAT NOT NULL,
   
   CONSTRAINT pk_usuario PRIMARY KEY(id_usuario),
-  CONSTRAINT ri_saldo_disponible CHECK (saldo_horas>=0)
+  CONSTRAINT ri_saldo_disponible CHECK (saldo_horas>=0 AND saldo_horas<=20)
   );
+  
+  
+CREATE TABLE incidencia(
+  id_alumno   VARCHAR(9) NOT NULL,
+  fecha       DATE NOT NULL,
+  id_promotor VARCHAR(9) NOT NULL,
+  descripcion VARCHAR(500),
+  
+  CONSTRAINT pk_incidencia PRIMARY KEY(id_alumno, fecha),
+  CONSTRAINT ca_incidencia_id_alumno FOREIGN KEY (id_alumno) REFERENCES usuario(id_usuario) ON DELETE RESTRICT ON UPDATE CASCADE,
+  CONSTRAINT ca_incidencia_id_promotor FOREIGN KEY (id_promotor) REFERENCES usuario(id_usuario) ON DELETE RESTRICT ON UPDATE CASCADE,
+  CONSTRAINT ri_coincidencia_usuario CHECK (id_alumno <> id_promotor)
+); 
   
   
 CREATE TABLE habilidad(
@@ -44,22 +57,20 @@ CREATE TABLE oferta(
   CONSTRAINT pk_codigo_oferta PRIMARY KEY(codigo_oferta),
   CONSTRAINT ca_id_usuario FOREIGN KEY(id_usuario) REFERENCES usuario(id_usuario) ON DELETE RESTRICT ON UPDATE CASCADE,
   CONSTRAINT ca_habilidad FOREIGN KEY(nombre_habilidad, nivel_habilidad) REFERENCES habilidad(nombre, nivel) ON DELETE RESTRICT ON UPDATE CASCADE,
-  CONTRAINT ri_fini_ffin CHECK (fecha_fin>fecha_inicio)
+  CONTRAINT ri_fini_ffin CHECK (fecha_fin>=fecha_inicio)
   );
 
 
 CREATE TABLE solicitud(
-  codigo_solicitud    VARCHAR(6) NOT NULL,
+  codigo_oferta    VARCHAR(6) NOT NULL,
+  id_usuario_solicitante  VARCHAR(9) NOT NULL,
   fecha_emision       DATE NOT NULL,
   fecha_aceptacion    DATE,
-  id_usuario_solicitante  VARCHAR(9) NOT NULL,
-  nombre_habilidad    VARCHAR(20),
-  nivel_habilidad     VARCHAR(20),
 
   CONSTRAINT pk_codigo_oferta PRIMARY KEY(codigo_solicitud),
   CONSTRAINT ca_id_usuario FOREIGN KEY(id_usuario) REFERENCES usuario(id_usuario) ON DELETE RESTRICT ON UPDATE CASCADE,
-  CONSTRAINT ca_habilidad FOREIGN KEY(nombre_habilidad, nivel_habilidad) REFERENCES habilidad(nombre, nivel) ON DELETE RESTRICT ON UPDATE CASCADE,
-  CONTRAINT ri_fini_ffin CHECK (fecha_emision>fecha_aceptacion)
+  CONSTRAINT ca_oferta FOREIGN KEY(codigo_oferta) REFERENCES habilidad(codigo_oferta) ON DELETE RESTRICT ON UPDATE CASCADE,
+  CONTRAINT ri_fini_ffin CHECK (fecha_emision>=fecha_aceptacion)
 );
     
 
@@ -70,7 +81,7 @@ CREATE TABLE colaboracion(
   horas                 FLOAT NOT NULL,
   evalucion             INT,
   codigo_oferta         VARCHAR(6) NOT NULL,
-  codigo_solicitud      VARCHAR(6) NOT NULL,
+  id_usuario_solicitante  VARCHAR(9) NOT NULL,
   
   CONSTRAINT  pk_codigo_colaboracion PRIMARY KEY(codigo_colaboracion),
   CONSTRAINT ca_fini FOREIGN KEY(fecha_inicio) REFERENCES solicitud(fecha_aceptacion) ON DELETE RESTRICT ON UPDATE CASCADE,
@@ -80,11 +91,13 @@ CREATE TABLE colaboracion(
   );
 
 
-INSERT INTO Usuario VALUES ('A1234509', 'GEMMA MENGUAL', 'al000001@gmail.com', '1234', , , 20);
+INSERT INTO Usuario VALUES ('A1234509', 'GEMMA MENGUAL', 'al000001@gmail.com', '1234', , , 16);
 INSERT INTO Usuario VALUES ('A2345091', 'ALBUSAC TAMARGO DANIEL', 'al000002@gmail.com', '1234', , ,15.5);
 INSERT INTO Usuario VALUES ('A1345092', 'CASTELLS GALLEGO MARAI DEL TISCAR', 'al000003@gmail.com', '1234', , TRUE, 20);
 INSERT INTO Usuario VALUES ('G1245093', 'CUETO AVELLANEDA RAFAEL', 'al000004@gmail.com', '1234', FALSE, , 1.5);
 INSERT INTO Usuario VALUES ('R1235094', 'ESCOT HIGUERAS SANDRA', 'al000005@gmail.com', '1234', , TRUE, 19);
+
+INSERT INTO incidencia VALUES ('G1245093', TO_DATE('21/02/2022', 'DD/MM/YYYY'), 'R1235094', 'El nivel ofertado es mayor que el que da');
 
 INSERT INTO habilidad VALUES ('h00001', 'bajo', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.');
 INSERT INTO habilidad VALUES ('h00001', 'medio', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.');
@@ -92,10 +105,22 @@ INSERT INTO habilidad VALUES ('h00001', 'alto', 'Lorem Ipsum is simply dummy tex
 INSERT INTO habilidad VALUES ('h00004', 'alto', 'The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.');
 INSERT INTO habilidad VALUES ('h00005', 'medio', 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour');
 
-INSERT INTO oferta VALUES ('o00001', TO_DATE('21/05/2019', 'DD/MM/YYYY'), TO_DATE('21/05/2019', 'DD/MM/YYYY'), 'A1234509', 'h00004', 'alto', '1The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.');
-INSERT INTO oferta VALUES ('o00002', TO_DATE('21/07/2019', 'DD/MM/YYYY'), TO_DATE('22/07/2019', 'DD/MM/YYYY'), 'A1234509', 'h00001', 'bajo', '2The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.');
-INSERT INTO oferta VALUES ('o00003', TO_DATE('27/04/2022', 'DD/MM/YYYY'), TO_DATE('21/05/2022', 'DD/MM/YYYY'), 'A1234509', 'h00005', 'medio', '3The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.');
+INSERT INTO oferta VALUES ('o00001', TO_DATE('21/05/2019', 'DD/MM/YYYY'), TO_DATE('21/06/2019', 'DD/MM/YYYY'), 'A1234509', 'h00004', 'alto', '1The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.');
+INSERT INTO oferta VALUES ('o00002', TO_DATE('21/07/2019', 'DD/MM/YYYY'), TO_DATE('29/07/2019', 'DD/MM/YYYY'), 'A1234509', 'h00001', 'bajo', '2The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.');
+INSERT INTO oferta VALUES ('o00003', TO_DATE('27/04/2022', 'DD/MM/YYYY'), TO_DATE('21/08/2022', 'DD/MM/YYYY'), 'A1234509', 'h00005', 'medio', '3The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.');
 INSERT INTO oferta VALUES ('o00004', TO_DATE('21/05/2020', 'DD/MM/YYYY'), , 'A2345091', 'h00001', 'alto', '4The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.');
 INSERT INTO oferta VALUES ('o00005', TO_DATE('14/09/2021', 'DD/MM/YYYY'), TO_DATE('21/10/2021', 'DD/MM/YYYY'), 'A2345091', 'h00001', 'bajo', '5The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.');
 
 
+INSERT INTO solicitud VALUES ('o00001', 'A2345091', TO_DATE('22/05/2019', 'DD/MM/YYYY'), TO_DATE('24/05/2019', 'DD/MM/YYYY'));
+INSERT INTO solicitud VALUES ('o00001', 'A2345091', TO_DATE('23/07/2019', 'DD/MM/YYYY'), TO_DATE('26/07/2019', 'DD/MM/YYYY'));
+INSERT INTO solicitud VALUES ('o00002', 'A2345091', TO_DATE('28/04/2022', 'DD/MM/YYYY'), TO_DATE('21/07/2022', 'DD/MM/YYYY'));
+INSERT INTO solicitud VALUES ('o00001', 'A1234509', TO_DATE('22/05/2020', 'DD/MM/YYYY'), ,);
+INSERT INTO solicitud VALUES ('o00003', 'A1234509', TO_DATE('16/09/2021', 'DD/MM/YYYY'), TO_DATE('20/10/2021', 'DD/MM/YYYY'));
+                           
+INSERT INTO colaboracion VALUES ('c00001', TO_DATE('24/05/2019', 'DD/MM/YYYY'), TO_DATE('24/05/2019', 'DD/MM/YYYY'), 2.5, ' ', 'o00001','A2345091');                           
+INSERT INTO colaboracion VALUES ('c00002', TO_DATE('26/07/2019', 'DD/MM/YYYY'), TO_DATE('28/07/2019', 'DD/MM/YYYY'), 1, ' ', 'o00001','A2345091');
+INSERT INTO colaboracion VALUES ('c00003', TO_DATE('21/07/2022', 'DD/MM/YYYY'), TO_DATE('22/07/2022', 'DD/MM/YYYY'), 1.5, ' ', 'o00001','A2345091');
+INSERT INTO colaboracion VALUES ('c00004', TO_DATE('20/10/2021', 'DD/MM/YYYY'), TO_DATE('21/10/2021', 'DD/MM/YYYY'), 5, ' ', 'o00001','A1234509');
+                           
+                           
