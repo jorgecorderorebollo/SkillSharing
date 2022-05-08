@@ -2,11 +2,8 @@ DROP TABLE colaboracion;
 DROP TABLE oferta;
 DROP TABLE solicitud;
 DROP TABLE incidencia;
-DROP TABLE estudiante;
-DROP TABLE promotor;
-DROP TABLE habilidad;
 DROP TABLE usuario;
-
+DROP TABLE habilidad;
 
 CREATE TABLE usuario(
   id_usuario        VARCHAR(9) NOT NULL,
