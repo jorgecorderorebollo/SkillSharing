@@ -54,7 +54,7 @@ CREATE TABLE oferta(
   CONSTRAINT pk_codigo_oferta PRIMARY KEY(codigo_oferta),
   CONSTRAINT ca_id_usuario FOREIGN KEY(id_usuario) REFERENCES usuario(id_usuario) ON DELETE RESTRICT ON UPDATE CASCADE,
   CONSTRAINT ca_habilidad FOREIGN KEY(nombre_habilidad, nivel_habilidad) REFERENCES habilidad(nombre, nivel) ON DELETE RESTRICT ON UPDATE CASCADE,
-  CONTRAINT ri_fini_ffin CHECK (fecha_fin>=fecha_inicio)
+  CONSTRAINT ri_fini_ffin CHECK (fecha_fin>=fecha_inicio)
   );
 
 
@@ -67,7 +67,7 @@ CREATE TABLE solicitud(
   CONSTRAINT pk_codigo_oferta PRIMARY KEY(codigo_solicitud),
   CONSTRAINT ca_id_usuario FOREIGN KEY(id_usuario) REFERENCES usuario(id_usuario) ON DELETE RESTRICT ON UPDATE CASCADE,
   CONSTRAINT ca_oferta FOREIGN KEY(codigo_oferta) REFERENCES habilidad(codigo_oferta) ON DELETE RESTRICT ON UPDATE CASCADE,
-  CONTRAINT ri_fini_ffin CHECK (fecha_emision>=fecha_aceptacion)
+  CONSTRAINT ri_fini_ffin CHECK (fecha_emision>=fecha_aceptacion)
 );
     
 
@@ -84,7 +84,7 @@ CREATE TABLE colaboracion(
   CONSTRAINT ca_fini FOREIGN KEY(fecha_inicio) REFERENCES solicitud(fecha_aceptacion) ON DELETE RESTRICT ON UPDATE CASCADE,
   CONSTRAINT ca_id_habilidad FOREIGN KEY(codigo_oferta) REFERENCES oferta(codigo_oferta) ON DELETE RESTRICT ON UPDATE CASCADE,
   CONSTRAINT ca_id_solicitud FOREIGN KEY(codigo_solicitud) REFERENCES solicitud(codigo_solicitud) ON DELETE RESTRICT ON UPDATE CASCADE,
-  CONSTRINT ri_evaluacion CHECK (evaluacion BETWEEN 0 AND 10)
+  CONSTRAINT ri_evaluacion CHECK (evaluacion BETWEEN 0 AND 10)
   );
 
 
