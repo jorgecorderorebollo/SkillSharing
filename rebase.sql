@@ -64,7 +64,7 @@ CREATE TABLE solicitud(
   fecha_emision       DATE NOT NULL,
   fecha_aceptacion    DATE,
 
-  CONSTRAINT pk_codigo_oferta PRIMARY KEY(codigo_oferta, id_usuario_solicitante),
+  CONSTRAINT pk_codigo_solicitud PRIMARY KEY(codigo_oferta, id_usuario_solicitante),
   CONSTRAINT ca_id_usuario FOREIGN KEY(id_usuario_solicitante) REFERENCES usuario(id_usuario) ON DELETE RESTRICT ON UPDATE CASCADE,
   CONSTRAINT ca_oferta FOREIGN KEY(codigo_oferta) REFERENCES oferta(codigo_oferta) ON DELETE RESTRICT ON UPDATE CASCADE,
   CONSTRAINT ri_fini_ffin CHECK (fecha_emision>=fecha_aceptacion)
