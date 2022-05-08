@@ -90,6 +90,7 @@ CREATE TABLE colaboracion(
 
 INSERT INTO Usuario VALUES ('A1234509', 'GEMMA MENGUAL', 'al000001@gmail.com', '1234', TRUE, FALSE, 16);
 INSERT INTO Usuario VALUES ('A2345091', 'ALBUSAC TAMARGO DANIEL', 'al000002@gmail.com', '1234', TRUE, FALSE,15.5);
+INSERT INTO Usuario (id_usuario, nombre_completo, email, password, saldo_horas) VALUES ('A2345098', 'ALBUSAC TAMARGO DANIEL', 'al000002@gmail.com', '1234', 15.5);
 INSERT INTO Usuario VALUES ('A1345092', 'CASTELLS GALLEGO MARAI DEL TISCAR', 'al000003@gmail.com', '1234', TRUE, TRUE, 20);
 INSERT INTO Usuario VALUES ('G1245093', 'CUETO AVELLANEDA RAFAEL', 'al000004@gmail.com', '1234', FALSE, FALSE, 1.5);
 INSERT INTO Usuario VALUES ('R1235094', 'ESCOT HIGUERAS SANDRA', 'al000005@gmail.com', '1234', TRUE, TRUE, 19);
@@ -105,7 +106,7 @@ INSERT INTO habilidad VALUES ('h00005', 'medio', 'There are many variations of p
 INSERT INTO oferta VALUES ('o00001', TO_DATE('21/05/2019', 'DD/MM/YYYY'), TO_DATE('21/06/2019', 'DD/MM/YYYY'), 'A1234509', 'h00004', 'alto', '1The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.');
 INSERT INTO oferta VALUES ('o00002', TO_DATE('21/07/2019', 'DD/MM/YYYY'), TO_DATE('29/07/2019', 'DD/MM/YYYY'), 'A1234509', 'h00001', 'bajo', '2The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.');
 INSERT INTO oferta VALUES ('o00003', TO_DATE('27/04/2022', 'DD/MM/YYYY'), TO_DATE('21/08/2022', 'DD/MM/YYYY'), 'A1234509', 'h00005', 'medio', '3The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.');
-INSERT INTO oferta VALUES ('o00004', TO_DATE('21/05/2020', 'DD/MM/YYYY'), , 'A2345091', 'h00001', 'alto', '4The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.');
+INSERT INTO oferta (codigo_oferta, fecha_inicio, id_usuario, nombre_habilidad, nivel_habilidad, descripcion)  VALUES ('o00004', TO_DATE('21/05/2020', 'DD/MM/YYYY'), 'A2345091', 'h00001', 'alto', '4The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.');
 INSERT INTO oferta VALUES ('o00005', TO_DATE('14/09/2021', 'DD/MM/YYYY'), TO_DATE('21/10/2021', 'DD/MM/YYYY'), 'A2345091', 'h00001', 'bajo', '5The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.');
 
 
