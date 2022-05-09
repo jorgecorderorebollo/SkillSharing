@@ -80,7 +80,8 @@ CREATE TABLE colaboracion(
   evaluacion            INT,
 
   CONSTRAINT  pk_codigo_colaboracion PRIMARY KEY(codigo_colaboracion),
-  CONSTRAINT ca_codigo_oferta FOREIGN KEY(codigo_oferta, id_usuario_solicitante) REFERENCES solicitud(codigo_oferta, id_usuario_solicitante) ON DELETE RESTRICT ON UPDATE CASCADE,
+  CONSTRAINT ca_codigo_oferta FOREIGN KEY(codigo_oferta, id_usuario_solicitante) REFERENCES 
+  solicitud(codigo_oferta, id_usuario_solicitante) ON DELETE RESTRICT ON UPDATE CASCADE,
   CONSTRAINT ri_evaluacion CHECK (evaluacion BETWEEN 0 AND 10)
   );
 
