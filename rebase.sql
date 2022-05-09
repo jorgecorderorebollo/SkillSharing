@@ -113,9 +113,9 @@ INSERT INTO solicitud VALUES ('o00002', 'A2345091', TO_DATE('28/04/2022', 'DD/MM
 INSERT INTO solicitud (codigo_oferta, id_usuario_solicitante, fecha_emision) VALUES ('o00001', 'A1234509', TO_DATE('22/05/2020', 'DD/MM/YYYY'));
 INSERT INTO solicitud VALUES ('o00003', 'A1234509', TO_DATE('16/09/2021', 'DD/MM/YYYY'), TO_DATE('20/10/2021', 'DD/MM/YYYY'));
                            
-INSERT INTO colaboracion VALUES ('c00001', 'o00001','A2345091', TO_DATE('24/05/2019', 'DD/MM/YYYY'), TO_DATE('24/05/2019', 'DD/MM/YYYY'), 2.5, ' ');                           
-INSERT INTO colaboracion VALUES ('c00002', 'o00001','A2345091', TO_DATE('26/07/2019', 'DD/MM/YYYY'), TO_DATE('28/07/2019', 'DD/MM/YYYY'), 1, ' ');
-INSERT INTO colaboracion VALUES ('c00003', 'o00001','A2345091', TO_DATE('21/07/2022', 'DD/MM/YYYY'), TO_DATE('22/07/2022', 'DD/MM/YYYY'), 1.5, ' ');
-INSERT INTO colaboracion VALUES ('c00004', 'o00001','A1234509', TO_DATE('20/10/2021', 'DD/MM/YYYY'), TO_DATE('21/10/2021', 'DD/MM/YYYY'), 5, ' ');
+INSERT INTO colaboracion VALUES ('c00001', 'o00001','A2345091', TO_DATE('24/05/2019', 'DD/MM/YYYY'), TO_DATE('24/05/2019', 'DD/MM/YYYY'), 2.5);                           
+INSERT INTO colaboracion VALUES ('c00002', 'o00001','A2345091', TO_DATE('26/07/2019', 'DD/MM/YYYY'), TO_DATE('28/07/2019', 'DD/MM/YYYY'), 1, 5);
+INSERT INTO colaboracion VALUES ('c00003', 'o00001','A2345091', TO_DATE('21/07/2022', 'DD/MM/YYYY'), TO_DATE('22/07/2022', 'DD/MM/YYYY'), 1.5, 4);
+INSERT INTO colaboracion VALUES ('c00004', 'o00001','A1234509', TO_DATE('20/10/2021', 'DD/MM/YYYY'), TO_DATE('21/10/2021', 'DD/MM/YYYY'), 5, 4);
                            
                            
