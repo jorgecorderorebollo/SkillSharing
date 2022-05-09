@@ -1,6 +1,6 @@
 DROP TABLE colaboracion;
-DROP TABLE oferta;
 DROP TABLE solicitud;
+DROP TABLE oferta;
 DROP TABLE incidencia;
 DROP TABLE usuario;
 DROP TABLE habilidad;
@@ -52,8 +52,8 @@ CREATE TABLE oferta(
   
   
   CONSTRAINT pk_codigo_oferta PRIMARY KEY(codigo_oferta),
-  CONSTRAINT ca_id_usuario FOREIGN KEY(id_usuario) REFERENCES usuario(id_usuario) ON DELETE RESTRICT ON UPDATE CASCADE,
-  CONSTRAINT ca_habilidad FOREIGN KEY(nombre_habilidad, nivel_habilidad) REFERENCES habilidad(nombre, nivel) ON DELETE RESTRICT ON UPDATE CASCADE,
+  CONSTRAINT ca_id_usuario FOREIGN KEY(id_usuario) REFERENCES usuario(id_usuario) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT ca_habilidad FOREIGN KEY(nombre_habilidad, nivel_habilidad) REFERENCES habilidad(nombre, nivel) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT ri_fini_ffin CHECK (fecha_fin>=fecha_inicio)
   );
 
@@ -64,8 +64,8 @@ CREATE TABLE solicitud(
   fecha_emision       DATE NOT NULL,
   fecha_aceptacion    DATE,
   CONSTRAINT pk_codigo_solicitud PRIMARY KEY(codigo_oferta, id_usuario_solicitante),
-  CONSTRAINT ca_id_usuario FOREIGN KEY(id_usuario_solicitante) REFERENCES usuario(id_usuario) ON DELETE RESTRICT ON UPDATE CASCADE,
-  CONSTRAINT ca_oferta FOREIGN KEY(codigo_oferta) REFERENCES oferta(codigo_oferta) ON DELETE RESTRICT ON UPDATE CASCADE,
+  CONSTRAINT ca_id_usuario FOREIGN KEY(id_usuario_solicitante) REFERENCES usuario(id_usuario) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT ca_oferta FOREIGN KEY(codigo_oferta) REFERENCES oferta(codigo_oferta) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT ri_fini_ffin CHECK (fecha_emision<=fecha_aceptacion)
 );
     
