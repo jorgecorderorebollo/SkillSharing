@@ -59,12 +59,13 @@ CREATE TABLE oferta(
 
 
 CREATE TABLE solicitud(
+  codigo_solicitud VARCHAR(6) NOT NULL,
   codigo_oferta    VARCHAR(6) NOT NULL,
   id_usuario_solicitante  VARCHAR(9) NOT NULL,
   fecha_emision       DATE NOT NULL,
   fecha_aceptacion    DATE,
 
-  CONSTRAINT pk_codigo_solicitud PRIMARY KEY(codigo_oferta, id_usuario_solicitante),
+  CONSTRAINT pk_codigo_solicitud PRIMARY KEY(codigo_solicitud),
   CONSTRAINT ca_id_usuario FOREIGN KEY(id_usuario_solicitante) REFERENCES usuario(id_usuario) ON DELETE RESTRICT ON UPDATE CASCADE,
   CONSTRAINT ca_oferta FOREIGN KEY(codigo_oferta) REFERENCES oferta(codigo_oferta) ON DELETE RESTRICT ON UPDATE CASCADE,
   CONSTRAINT ri_fini_ffin CHECK (fecha_emision>=fecha_aceptacion)
@@ -76,12 +77,13 @@ CREATE TABLE colaboracion(
   fecha_inicio          DATE NOT NULL,
   fecha_fin             DATE,
   horas                 FLOAT NOT NULL,
-  evaluacion             INT,
+  evaluacion            INT,
+  codigo_solicitud      VARCHAR(6) NOT NULL,
   codigo_oferta         VARCHAR(6) NOT NULL,
   id_usuario_solicitante  VARCHAR(9) NOT NULL,
   
   CONSTRAINT  pk_codigo_colaboracion PRIMARY KEY(codigo_colaboracion),
-  CONSTRAINT ca_fini FOREIGN KEY(fecha_inicio, id_usuario_solicitante, codigo_oferta) REFERENCES solicitud(fecha_aceptacion, id_usuario_solicitante, codigo_oferta) ON DELETE RESTRICT ON UPDATE CASCADE,
+  CONSTRAINT ca_codigo_oferta FOREIGN KEY(codigo_oferta, id_usuario_solicitante) REFERENCES solicitud(codigo_oferta, id_usuario_solicitante) ON DELETE RESTRICT ON UPDATE CASCADE,
   CONSTRAINT ri_evaluacion CHECK (evaluacion BETWEEN 0 AND 10)
   );
 
