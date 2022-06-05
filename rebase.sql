@@ -46,6 +46,7 @@ CREATE TABLE oferta(
   fecha_inicio    DATE NOT NULL,
   fecha_fin       DATE,
   id_usuario      VARCHAR(9) NOT NULL,
+  tipo            BOOLEAN NOT NULL,
   nombre_habilidad  VARCHAR(20) NOT NULL,
   nivel_habilidad   VARCHAR(20) NOT NULL,
   descripcion     VARCHAR(500),
